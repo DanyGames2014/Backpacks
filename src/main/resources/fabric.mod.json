@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "backpacks",
+  "version": "${version}",
+
+  "name": "Backpacks",
+  "description": "Adds backpacks to the game",
+  "authors": [
+    "DanyGames2014"
+  ],
+
+  "license": "MIT",
+  "icon": "assets/backpacks/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "stationapi:event_bus": [
+      "net.danygames2014.backpacks.init.ItemListener"
+    ],
+    "stationapi:event_bus_client": [
+      "net.danygames2014.backpacks.init.KeyBindingListener",
+      "net.danygames2014.backpacks.event.KeyPressListener"
+    ],
+    "stationapi:event_bus_server": [
+    ]
+  },
+  "mixins": [
+    "backpacks.mixins.json"
+  ],
+
+  "depends": {
+    "minecraft": "1.0.0-beta.7.3"
+  }
+}
