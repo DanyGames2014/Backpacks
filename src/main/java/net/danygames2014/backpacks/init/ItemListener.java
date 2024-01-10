@@ -14,9 +14,11 @@ public class ItemListener {
 
     public static Item leather_backpack;
     public static Item iron_backpack;
+    public static Item crappy_backpack;
 
     @EventListener
     public void registerItems(ItemRegistryEvent event){
+        crappy_backpack = new BackpackItem(NAMESPACE.id("crappy_backpack"),1,1).setTranslationKey(NAMESPACE, "crappy_backpack");
         leather_backpack = new BackpackItem(NAMESPACE.id("leather_backpack"),2,9).setTranslationKey(NAMESPACE,"leather_backpack");
         iron_backpack = new BackpackItem(NAMESPACE.id("iron_backpack"),12,13).setTranslationKey(NAMESPACE, "iron_backpack");
     }
