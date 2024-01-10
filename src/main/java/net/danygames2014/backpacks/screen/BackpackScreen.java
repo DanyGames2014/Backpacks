@@ -7,38 +7,55 @@ import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
 public class BackpackScreen extends ContainerScreen {
+    public static final int SLOT_SIZE = 18;
+    public static final int CORNER_SIZE = 7;
+    public static final int EDGE_SIZE = 7;
     public int rows;
+    public int columns;
 
     public BackpackScreen(PlayerEntity player, ItemStack stack) {
         super(new BackpackScreenHandler(player.inventory, stack));
         player.method_490("Backpack Opened");
-        this.rows = ((BackpackItem)stack.getItem()).rows;
-        this.backgroundHeight = 243 + 96;
-        this.backgroundWidth = 248;
+        this.rows = ((BackpackItem) stack.getItem()).rows;
+        this.columns = ((BackpackItem) stack.getItem()).columns;
+        this.backgroundHeight = 118 + (rows * SLOT_SIZE); // 118 = 17(Top Edge) + 4(Non-Overlapped Bottom Edge) + 97(Inventory Texture Height)
+        this.backgroundWidth = Math.max(176, 14 + (columns * SLOT_SIZE)); // 176 = Inventory Texture Width
     }
 
     @Override
     protected void drawForeground() {
         this.textRenderer.draw("Nyaaaa!", 8, 6, 4210752);
-        this.textRenderer.draw("Inventory", 8, this.rows * 18 + 17 + 3, 4210752); // 17 is the "chin" + 3
+        this.textRenderer.draw("Inventory", 8, (SLOT_SIZE * rows) + 24, 4210752);
     }
 
     @Override
     protected void drawBackground(float tickDelta) {
-        int backpackTextureId = this.minecraft.textureManager.getTextureId("assets/backpacks/stationapi/textures/gui/large_backpack.png");
-        int playerInvTextureId = this.minecraft.textureManager.getTextureId("gui/container.png");
+        int containerTexturesId = this.minecraft.textureManager.getTextureId("assets/backpacks/stationapi/textures/gui/modular_container.png");
+        int playerInventoryTextureId = this.minecraft.textureManager.getTextureId("assets/backpacks/stationapi/textures/gui/player_inventory.png");
+        int slotsTextureId = this.minecraft.textureManager.getTextureId("assets/backpacks/stationapi/textures/gui/slots.png");
 
         int x = (this.width - this.backgroundWidth) / 2;
         int y = (this.height - this.backgroundHeight) / 2;
 
-        this.drawTextWithShadow(this.textRenderer, "Testing Text", this.width/2, this.height/2, 4210752);
+        GL11.glColor4f(1F, 1F, 1F, 1.0F);
 
-        GL11.glColor4f(0.2F, 0.2F, 0.2F, 1.0F);
+        // Backpack Frame
+        this.minecraft.textureManager.bindTexture(containerTexturesId);
+        this.drawTexture(x, y, 57, 211, CORNER_SIZE, CORNER_SIZE); // Top Left Corner - Small Corner
+        this.drawTexture(x + CORNER_SIZE, y, 18, 230, SLOT_SIZE * columns, 17); // Top Edge
+        this.drawTexture(x + CORNER_SIZE + (SLOT_SIZE * columns), y, 66, 211, CORNER_SIZE, CORNER_SIZE); // Top Right Corner
+        this.drawTexture(x, y + CORNER_SIZE, 0, 0, EDGE_SIZE, 10 + (SLOT_SIZE * rows)); // Left Edge
+        this.drawTexture(x + CORNER_SIZE + (SLOT_SIZE * columns), y + CORNER_SIZE, 9, 0, EDGE_SIZE, 10 + (SLOT_SIZE * rows)); // Right Edge
+        this.drawTexture(x, y + (SLOT_SIZE * rows) + 17, 57, 220, EDGE_SIZE, EDGE_SIZE); // Bottom Left Corner
+        this.drawTexture(x + EDGE_SIZE, y + (SLOT_SIZE * rows) + 17, 18, 249, SLOT_SIZE * columns, CORNER_SIZE); // Bottom Edge
+        this.drawTexture(x + EDGE_SIZE + (SLOT_SIZE * columns), y + (SLOT_SIZE * rows) + 17, 66, 220, CORNER_SIZE, CORNER_SIZE); // Bottom Right Corner
 
-        this.minecraft.textureManager.bindTexture(backpackTextureId);
-        this.drawTexture(x, y+(int)tickDelta, 0, 0, this.backgroundWidth, this.rows * 18 + 27);
+        // Backpack Slots
+        this.minecraft.textureManager.bindTexture(slotsTextureId);
+        this.drawTexture(x + EDGE_SIZE, y + CORNER_SIZE + 10, 0, 0, SLOT_SIZE * columns, SLOT_SIZE * rows);
 
-        this.minecraft.textureManager.bindTexture(playerInvTextureId);
-        this.drawTexture(x, y + this.rows * 18 + 17, 0, 126, this.backgroundWidth, 96);
+        // Player Inventory
+        this.minecraft.textureManager.bindTexture(playerInventoryTextureId);
+        this.drawTexture(x, y + (SLOT_SIZE * rows) + 21, 0, 2, this.backgroundWidth, 94); // 21 = 17(Top Edge) + ( 7(Bottom Edge) - 3(Player Inventory Overlap) )
     }
 }
