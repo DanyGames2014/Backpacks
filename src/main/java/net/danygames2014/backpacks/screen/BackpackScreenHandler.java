@@ -18,7 +18,8 @@ public class BackpackScreenHandler extends Container {
         this.backpackStack = stack;
         this.backpackInventory = new BackpackInventory(stack);
 
-        int playerInventoryOffset = 34 + (backpackInventory.rows * 18); // 34 = 17(Backpack Top Bar) + 3(Visible Backpack Bottom Part) + 14 (Player Inventory Top Bar)
+        int playerInventoryVerticalOffset = 34 + (backpackInventory.rows * 18); // 34 = 17(Backpack Top Bar) + 3(Visible Backpack Bottom Part) + 14 (Player Inventory Top Bar)
+        int playerInventoryHorizontalOffset = (Math.max(176, 14 + (backpackInventory.columns * 18)) - 176) / 2;
 
         int row;
         int column;
@@ -41,8 +42,8 @@ public class BackpackScreenHandler extends Container {
             for(column = 0; column < 9; column++) {
                 this.method_2079(new Slot(playerInventory,
                         column + (row * 9) + 9,
-                        8 + (column * 18),
-                        playerInventoryOffset + (row * 18)
+                        playerInventoryHorizontalOffset + 8 + (column * 18),
+                        playerInventoryVerticalOffset + (row * 18)
                     )
                 );
             }
@@ -52,8 +53,8 @@ public class BackpackScreenHandler extends Container {
         for(row = 0; row < 9; row++) {
             this.method_2079(new Slot(playerInventory,
                     row,
-                    8 + (row * 18),
-                    playerInventoryOffset + 58 // 58 = ( 3(Inventory Rows) * 18(Slot Size) ) + 4(Bar between Inventory and Hotbar Slots)
+                    playerInventoryHorizontalOffset + 8 + (row * 18),
+                    playerInventoryVerticalOffset + 58 // 58 = ( 3(Inventory Rows) * 18(Slot Size) ) + 4(Bar between Inventory and Hotbar Slots)
                 )
             );
         }

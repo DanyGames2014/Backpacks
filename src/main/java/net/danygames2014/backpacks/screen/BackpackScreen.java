@@ -12,6 +12,7 @@ public class BackpackScreen extends ContainerScreen {
     public static final int EDGE_SIZE = 7;
     public int rows;
     public int columns;
+    public int playerInventoryHorizontalOffset;
 
     public BackpackScreen(PlayerEntity player, ItemStack stack) {
         super(new BackpackScreenHandler(player.inventory, stack));
@@ -20,12 +21,13 @@ public class BackpackScreen extends ContainerScreen {
         this.columns = ((BackpackItem) stack.getItem()).columns;
         this.backgroundHeight = 118 + (rows * SLOT_SIZE); // 118 = 17(Top Edge) + 4(Non-Overlapped Bottom Edge) + 97(Inventory Texture Height)
         this.backgroundWidth = Math.max(176, 14 + (columns * SLOT_SIZE)); // 176 = Inventory Texture Width
+        this.playerInventoryHorizontalOffset = (this.backgroundWidth - 176) / 2;
     }
 
     @Override
     protected void drawForeground() {
         this.textRenderer.draw("Nyaaaa!", 8, 6, 4210752);
-        this.textRenderer.draw("Inventory", 8, (SLOT_SIZE * rows) + 24, 4210752);
+        this.textRenderer.draw("Inventory", 8 + playerInventoryHorizontalOffset, (SLOT_SIZE * rows) + 24, 4210752);
     }
 
     @Override
@@ -56,6 +58,6 @@ public class BackpackScreen extends ContainerScreen {
 
         // Player Inventory
         this.minecraft.textureManager.bindTexture(playerInventoryTextureId);
-        this.drawTexture(x, y + (SLOT_SIZE * rows) + 21, 0, 2, this.backgroundWidth, 94); // 21 = 17(Top Edge) + ( 7(Bottom Edge) - 3(Player Inventory Overlap) )
+        this.drawTexture(x + this.playerInventoryHorizontalOffset, y + (SLOT_SIZE * rows) + 21, 0, 2, this.backgroundWidth, 94); // 21 = 17(Top Edge) + ( 7(Bottom Edge) - 3(Player Inventory Overlap) )
     }
 }
