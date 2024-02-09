@@ -68,6 +68,11 @@ public class BackpackInventory implements Inventory {
     }
 
     @Override
+    public int getMaxCountPerStack() {
+        return 64;
+    }
+
+    @Override
     public void markDirty() {
         writeNbt(this.stack);
     }
