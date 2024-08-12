@@ -1,12 +1,12 @@
 package net.danygames2014.backpacks.screen;
 
 import net.danygames2014.backpacks.item.BackpackItem;
-import net.minecraft.client.gui.screen.container.ContainerScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
-public class BackpackScreen extends ContainerScreen {
+public class BackpackScreen extends HandledScreen {
     public static final int SLOT_SIZE = 18;
     public static final int CORNER_SIZE = 7;
     public static final int EDGE_SIZE = 7;
@@ -14,10 +14,10 @@ public class BackpackScreen extends ContainerScreen {
     public int columns;
     public int playerInventoryHorizontalOffset;
 
-    public BackpackScreen(PlayerEntity player, ItemStack stack) {
-        super(new BackpackScreenHandler(player.inventory, stack));
-        this.rows = ((BackpackItem) stack.getItem()).rows;
-        this.columns = ((BackpackItem) stack.getItem()).columns;
+    public BackpackScreen(PlayerEntity player, ItemStack backpackStack) {
+        super(new BackpackScreenHandler(player.inventory, backpackStack));
+        this.rows = ((BackpackItem) backpackStack.getItem()).rows;
+        this.columns = ((BackpackItem) backpackStack.getItem()).columns;
         this.backgroundHeight = 118 + (rows * SLOT_SIZE); // 118 = 17(Top Edge) + 4(Non-Overlapped Bottom Edge) + 97(Inventory Texture Height)
         this.backgroundWidth = Math.max(176, 14 + (columns * SLOT_SIZE)); // 176 = Inventory Texture Width
         this.playerInventoryHorizontalOffset = (this.backgroundWidth - 176) / 2;
