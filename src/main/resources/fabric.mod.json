@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "backpacks",
+  "id": "nyabags",
   "version": "${version}",
 
-  "name": "Backpacks",
+  "name": "NyaBags",
   "description": "Adds backpacks to the game",
   "authors": [
     "DanyGames2014"
@@ -30,6 +30,6 @@
 
   "depends": {
     "minecraft": "1.0.0-beta.7.3",
-    "stationapi": "2.*"
+    "stationapi": "*"
   }
 }

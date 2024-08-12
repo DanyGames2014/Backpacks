@@ -31,9 +31,9 @@ public class BackpackScreen extends HandledScreen {
 
     @Override
     protected void drawBackground(float tickDelta) {
-        int containerTexturesId = this.minecraft.textureManager.getTextureId("/assets/backpacks/stationapi/textures/gui/modular_container.png");
-        int playerInventoryTextureId = this.minecraft.textureManager.getTextureId("/assets/backpacks/stationapi/textures/gui/player_inventory.png");
-        int slotsTextureId = this.minecraft.textureManager.getTextureId("/assets/backpacks/stationapi/textures/gui/slots.png");
+        int containerTexturesId = this.minecraft.textureManager.getTextureId("/assets/nyabags/stationapi/textures/gui/modular_container.png");
+        int playerInventoryTextureId = this.minecraft.textureManager.getTextureId("/assets/nyabags/stationapi/textures/gui/player_inventory.png");
+        int slotsTextureId = this.minecraft.textureManager.getTextureId("/assets/nyabags/stationapi/textures/gui/slots.png");
 
         int x = (this.width - this.backgroundWidth) / 2;
         int y = (this.height - this.backgroundHeight) / 2;

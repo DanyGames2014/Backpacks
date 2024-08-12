@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "lll",
-    "lcl",
-    "lll"
+    "ddd",
+    "dcd",
+    "ddd"
   ],
   "key": {
-    "l": {
-      "item": "minecraft:leather"
+    "d": {
+      "item": "minecraft:diamond"
     },
     "c": {
       "item": "minecraft:chest"
     }
   },
   "result": {
-    "item": "backpacks:leather_backpack",
+    "item": "nyabags:diamond_backpack",
     "count": 1
   }
 }

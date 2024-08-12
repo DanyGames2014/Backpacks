@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "backpacks:item/leather_backpack"
+    "layer0": "nyabags:item/leather_backpack"
   }
 }
