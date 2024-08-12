@@ -9,7 +9,7 @@ public class KeyBindingListener {
     public static KeyBinding openBackpack;
 
     @EventListener
-    public void registerKeys(KeyBindingRegisterEvent event){
-        openBackpack = new KeyBinding("key.backpacks:open_backpack", Keyboard.KEY_B);
+    public void registerKeys(KeyBindingRegisterEvent event) {
+        event.keyBindings.add(openBackpack = new KeyBinding("key.backpacks:open_backpack", Keyboard.KEY_B));
     }
 }
