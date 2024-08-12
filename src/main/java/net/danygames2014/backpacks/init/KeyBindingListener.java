@@ -5,6 +5,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.modificationstation.stationapi.api.client.event.option.KeyBindingRegisterEvent;
 import org.lwjgl.input.Keyboard;
 
+@SuppressWarnings("unused")
 public class KeyBindingListener {
     public static KeyBinding openBackpack;
 
