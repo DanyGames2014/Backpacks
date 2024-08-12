@@ -16,7 +16,6 @@ public class BackpackScreen extends ContainerScreen {
 
     public BackpackScreen(PlayerEntity player, ItemStack stack) {
         super(new BackpackScreenHandler(player.inventory, stack));
-        player.method_490("Backpack Opened");
         this.rows = ((BackpackItem) stack.getItem()).rows;
         this.columns = ((BackpackItem) stack.getItem()).columns;
         this.backgroundHeight = 118 + (rows * SLOT_SIZE); // 118 = 17(Top Edge) + 4(Non-Overlapped Bottom Edge) + 97(Inventory Texture Height)
@@ -26,7 +25,7 @@ public class BackpackScreen extends ContainerScreen {
 
     @Override
     protected void drawForeground() {
-        this.textRenderer.draw("Nyaaaa!", 8, 6, 4210752);
+        this.textRenderer.draw("Backpack", 8, 6, 4210752);
         this.textRenderer.draw("Inventory", 8 + playerInventoryHorizontalOffset, (SLOT_SIZE * rows) + 24, 4210752);
     }
 

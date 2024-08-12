@@ -1,3 +1,6 @@
 item.leather_backpack.name=Leather Backpack
+item.iron_backpack.name=Iron Backpack
+item.gold_backpack.name=Gold Backpack
+item.diamond_backpack.name=Diamond Backpack
 
 key.open_backpack=Open Backpack

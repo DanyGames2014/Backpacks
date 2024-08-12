@@ -14,12 +14,14 @@ public class ItemListener {
 
     public static Item leather_backpack;
     public static Item iron_backpack;
-    public static Item crappy_backpack;
+    public static Item gold_backpack;
+    public static Item diamond_backpack;
 
     @EventListener
     public void registerItems(ItemRegistryEvent event){
-        crappy_backpack = new BackpackItem(NAMESPACE.id("crappy_backpack"),1,1).setTranslationKey(NAMESPACE, "crappy_backpack");
         leather_backpack = new BackpackItem(NAMESPACE.id("leather_backpack"),2,9).setTranslationKey(NAMESPACE,"leather_backpack");
-        iron_backpack = new BackpackItem(NAMESPACE.id("iron_backpack"),12,13).setTranslationKey(NAMESPACE, "iron_backpack");
+        iron_backpack = new BackpackItem(NAMESPACE.id("iron_backpack"),4,9).setTranslationKey(NAMESPACE, "iron_backpack");
+        gold_backpack = new BackpackItem(NAMESPACE.id("gold_backpack"), 6, 9).setTranslationKey(NAMESPACE, "gold_backpack");
+        diamond_backpack = new BackpackItem(NAMESPACE.id("diamond_backpack"), 7, 11).setTranslationKey(NAMESPACE, "diamond_backpack");
     }
 }

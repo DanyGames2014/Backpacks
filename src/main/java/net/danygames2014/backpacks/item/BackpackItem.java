@@ -24,10 +24,10 @@ public class BackpackItem extends TemplateItem {
     @SuppressWarnings("deprecation")
     @Override
     public ItemStack use(ItemStack stack, World world, PlayerEntity player) {
-        if(player.method_1373()){
-            player.method_490(((StationItemNbt)stack).getStationNbt().toString());
-        }else{
-            ((Minecraft)FabricLoader.getInstance().getGameInstance()).setScreen(new BackpackScreen(player, stack));
+        if (player.method_1373()) {
+            player.method_490(((StationItemNbt) stack).getStationNbt().toString());
+        } else {
+            ((Minecraft) FabricLoader.getInstance().getGameInstance()).setScreen(new BackpackScreen(player, stack));
         }
         return stack;
     }
