@@ -57,6 +57,6 @@ public class BackpackScreen extends HandledScreen {
 
         // Player Inventory
         this.minecraft.textureManager.bindTexture(playerInventoryTextureId);
-        this.drawTexture(x + this.playerInventoryHorizontalOffset, y + (SLOT_SIZE * rows) + 21, 0, 2, this.backgroundWidth, 94); // 21 = 17(Top Edge) + ( 7(Bottom Edge) - 3(Player Inventory Overlap) )
+        this.drawTexture(x + this.playerInventoryHorizontalOffset, y + (SLOT_SIZE * rows) + 21, 0, 2, this.backgroundWidth, 95); // 21 = 17(Top Edge) + ( 7(Bottom Edge) - 3(Player Inventory Overlap) )
     }
 }
