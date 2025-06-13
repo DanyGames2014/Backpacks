@@ -1,4 +1,4 @@
-package net.danygames2014.backpacks.init;
+package net.danygames2014.nyabags.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.option.KeyBinding;

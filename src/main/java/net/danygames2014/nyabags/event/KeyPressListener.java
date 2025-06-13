@@ -1,7 +1,7 @@
-package net.danygames2014.backpacks.event;
+package net.danygames2014.nyabags.event;
 
-import net.danygames2014.backpacks.init.KeyBindingListener;
-import net.danygames2014.backpacks.item.BackpackItem;
+import net.danygames2014.nyabags.init.KeyBindingListener;
+import net.danygames2014.nyabags.item.BackpackItem;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.Minecraft;

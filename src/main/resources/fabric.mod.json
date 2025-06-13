@@ -10,16 +10,17 @@
   ],
 
   "license": "MIT",
-  "icon": "assets/backpacks/icon.png",
+  "icon": "assets/nyabags/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.danygames2014.backpacks.init.ItemListener"
+      "net.danygames2014.nyabags.NyaBags",
+      "net.danygames2014.nyabags.init.ItemListener"
     ],
     "stationapi:event_bus_client": [
-      "net.danygames2014.backpacks.init.KeyBindingListener",
-      "net.danygames2014.backpacks.event.KeyPressListener"
+      "net.danygames2014.nyabags.init.KeyBindingListener",
+      "net.danygames2014.nyabags.event.KeyPressListener"
     ],
     "stationapi:event_bus_server": [
     ]

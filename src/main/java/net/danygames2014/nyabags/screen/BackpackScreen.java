@@ -1,6 +1,7 @@
-package net.danygames2014.backpacks.screen;
+package net.danygames2014.nyabags.screen;
 
-import net.danygames2014.backpacks.item.BackpackItem;
+import net.danygames2014.nyabags.inventory.BackpackInventory;
+import net.danygames2014.nyabags.item.BackpackItem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -14,10 +15,10 @@ public class BackpackScreen extends HandledScreen {
     public int columns;
     public int playerInventoryHorizontalOffset;
 
-    public BackpackScreen(PlayerEntity player, ItemStack backpackStack) {
-        super(new BackpackScreenHandler(player.inventory, backpackStack));
-        this.rows = ((BackpackItem) backpackStack.getItem()).rows;
-        this.columns = ((BackpackItem) backpackStack.getItem()).columns;
+    public BackpackScreen(PlayerEntity player, BackpackInventory backpackInventory) {
+        super(new BackpackScreenHandler(player.inventory, backpackInventory.stack));
+        this.rows = backpackInventory.rows;
+        this.columns = backpackInventory.columns;
         this.backgroundHeight = 118 + (rows * SLOT_SIZE); // 118 = 17(Top Edge) + 4(Non-Overlapped Bottom Edge) + 97(Inventory Texture Height)
         this.backgroundWidth = Math.max(176, 14 + (columns * SLOT_SIZE)); // 176 = Inventory Texture Width
         this.playerInventoryHorizontalOffset = (this.backgroundWidth - 176) / 2;

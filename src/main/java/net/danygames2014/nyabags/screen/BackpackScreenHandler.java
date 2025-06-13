@@ -1,7 +1,7 @@
-package net.danygames2014.backpacks.screen;
+package net.danygames2014.nyabags.screen;
 
-import net.danygames2014.backpacks.inventory.BackpackInventory;
-import net.danygames2014.backpacks.inventory.slot.BackpackSlot;
+import net.danygames2014.nyabags.inventory.BackpackInventory;
+import net.danygames2014.nyabags.inventory.slot.BackpackSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;

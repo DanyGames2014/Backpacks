@@ -1,6 +1,6 @@
-package net.danygames2014.backpacks.inventory;
+package net.danygames2014.nyabags.inventory;
 
-import net.danygames2014.backpacks.item.BackpackItem;
+import net.danygames2014.nyabags.item.BackpackItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -20,6 +20,10 @@ public class BackpackInventory implements Inventory {
         this.inventory = new ItemStack[this.rows * this.columns];
         this.stack = stack;
         readNbt(stack);
+    }
+
+    public BackpackInventory() {
+        
     }
 
     @Override
