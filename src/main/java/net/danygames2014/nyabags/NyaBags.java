@@ -18,6 +18,7 @@ public class NyaBags {
     @Entrypoint.Namespace
     public static Namespace NAMESPACE;
 
+    @Environment(EnvType.CLIENT)
     @EventListener
     public void registerScreenHandlers(GuiHandlerRegistryEvent event) {
         event.register(NAMESPACE.id("backpack"), new GuiHandler((GuiHandler.ScreenFactory) this::openBackpack, BackpackInventory::new));
@@ -27,7 +28,11 @@ public class NyaBags {
     private Screen openBackpack(PlayerEntity playerEntity, Inventory inventory, MessagePacket messagePacket) {
         BackpackInventory backpackInventory;
         if (playerEntity.world.isRemote) {
-            backpackInventory = null;
+            if (messagePacket.ints == null || messagePacket.ints.length == 0 || messagePacket.ints[0] == -1) {
+                return null;
+            }
+
+            backpackInventory = new BackpackInventory(playerEntity.inventory.getStack(messagePacket.ints[0]));
         } else {
             backpackInventory = (BackpackInventory) inventory;
         }

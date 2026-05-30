@@ -10,8 +10,8 @@ import net.minecraft.screen.slot.Slot;
 
 public class BackpackScreenHandler extends ScreenHandler {
     Inventory playerInventory;
-    BackpackInventory backpackInventory;
-    ItemStack backpackStack;
+    public BackpackInventory backpackInventory;
+    public ItemStack backpackStack;
 
     public BackpackScreenHandler(Inventory playerInventory, ItemStack stack) {
         this.playerInventory = playerInventory;
